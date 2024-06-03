@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Add Question - HIA Careers{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        
+        <div class="form-container">
+            <h2 class="mb-3 text-center">Enter Question Details</h2>
+            <form method="POST" action="{% url "submit_question" %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="questionText" class="form-label">Question Text</label>
+                    {% comment %} <textarea class="form-control" id="questionText" name="question_text" rows="3" required></textarea> {% endcomment %}
+                    <textarea id="mytextarea" class="form-control" name="question_text" rows="3" required></textarea>
+                </div>
+                <div class = "row">
+                    <div class="col-md-3 mb-3">
+                        <label for="optionA" class="form-label">Option A</label>
+                        <input type="text" class="form-control" id="optionA" name="option_a" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="optionB" class="form-label">Option B</label>
+                        <input type="text" class="form-control" id="optionB" name="option_b" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="optionC" class="form-label">Option C</label>
+                        <input type="text" class="form-control" id="optionC" name="option_c" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="optionD" class="form-label">Option D</label>
+                        <input type="text" class="form-control" id="optionD" name="option_d" required>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class="col-md-6 mb-3">
+                        <label for="correctAnswer" class="form-label">Correct Answer</label>
+                        <select class="form-select" id="correctAnswer" name="correct_answer_option" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option value="a">Option A</option>
+                            <option value="b">Option B</option>
+                            <option value="c">Option C</option>
+                            <option value="d">Option D</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="image" class="form-label">Image (Optional)</label>
+                        <input type="file" class="form-control" id="image" name="image">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="answerDescription" class="form-label">Answer Description</label>
+                    <textarea class="form-control" id="answerDescription" name="correct_answer_description" rows="3" required></textarea>
+                </div>
+                <div class = "row">
+                    <div class="col-md-4 mb-3">
+                        <label for="topic" class="form-label">Topic</label>
+                        <input type="text" class="form-control" id="topic" name="topic" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="area" class="form-label">Area</label>
+                        <input type="text" class="form-control" id="area" name="area" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="difficulty" class="form-label">Level of Difficulty</label> 
+                        <select class="form-select" id="difficulty" name="level_of_defficulty" required>
+                            <option selected disabled value="">Select Difficulty</option>
+                            {% for difficulty in difficulties %}
+                            <option value="{{ difficulty.id }}">{{ difficulty.level }}</option>
+                            {% endfor %}
+                        </select>                        
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block additional_scripts %}
+<script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('mytextarea');
+</script>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Upload an Excel File - HIA Careers{% endblock %}
+
+{% block content %}
+
+    <h1>Upload an Excel file to populate the database</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+    <a href="/"> <i class="fa-solid fa-arrow-left-long"></i> Home </a>
+
+{% endblock %}

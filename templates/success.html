@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Successful - HIA Careers{% endblock %}
+
+{% block content %}
+    <h1>Success!</h1>
+    <p>Your file has been successfully uploaded and the data has been stored in the database.</p>
+    <a href="/upload/">Upload another file</a><br>
+    <a href="{% url "view_generate_doc" %}">Generate Word file</a><br>
+    <a href="/"> <i class="fa-solid fa-arrow-left-long"></i> Go to Home </a>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Generate Document - HIA Careers{% endblock %}
+
+{% block content %}
+
+    <h1>Generate Questionnaire Document</h1>
+    <p>Click the button below to generate and download the questionnaire Word document based on the database data.</p>
+    <form action="{% url 'generate_doc' %}" method="get">
+        <button type="submit">Generate Document</button>
+    </form>
+    <a href="/"> <i class="fa-solid fa-arrow-left-long"></i> Home </a>
+{% endblock %}
